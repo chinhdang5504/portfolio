@@ -1,0 +1,229 @@
+@import 'tailwindcss';
+
+/* === CSS Variables from original style.css (subset + gradients) === */
+:root {
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
+  --bg-gradient-jet:
+    linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
+  --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+  --onyx: hsl(240, 1%, 17%);
+  --eerie-black-1: hsl(240, 2%, 13%);
+  --eerie-black-2: hsl(240, 2%, 12%);
+  --smoky-black: hsl(0, 0%, 7%);
+  --white-1: hsl(0, 0%, 100%);
+  --white-2: hsl(0, 0%, 98%);
+  --light-gray: hsl(0, 0%, 84%);
+  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --orange-yellow-crayola: hsl(45, 100%, 72%);
+  --jet: hsl(0, 0%, 22%);
+  --onyx: hsl(240, 1%, 17%);
+  --eerie-black-1: hsl(240, 2%, 13%);
+  --eerie-black-2: hsl(240, 2%, 12%);
+  --smoky-black: hsl(0, 0%, 7%);
+  --white-1: hsl(0, 0%, 100%);
+  --white-2: hsl(0, 0%, 98%);
+  --orange-yellow-crayola: hsl(45, 100%, 72%);
+  --vegas-gold: hsl(45, 54%, 58%);
+  --light-gray: hsl(0, 0%, 84%);
+  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --bittersweet-shimmer: hsl(0, 43%, 51%);
+
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
+  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
+  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+}
+
+/* Basic reset aligning with template */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  background: var(--smoky-black);
+  font-family:
+    'Poppins',
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+}
+
+/* Tailwind v4 custom utilities */
+@utility shadow-var-1 {
+  box-shadow: var(--shadow-1);
+}
+@utility shadow-var-2 {
+  box-shadow: var(--shadow-2);
+}
+@utility shadow-var-3 {
+  box-shadow: var(--shadow-3);
+}
+@utility shadow-var-4 {
+  box-shadow: var(--shadow-4);
+}
+@utility shadow-var-5 {
+  box-shadow: var(--shadow-5);
+}
+
+@utility text-gradient-yellow {
+  background: var(--text-gradient-yellow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility card-surface {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+}
+
+.card-surface {
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+@utility btn-onyx {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+}
+@utility btn-onyx-inner {
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--bg-gradient-jet);
+}
+
+.sidebar,
+article {
+  width: auto;
+}
+
+.article-title {
+  @apply relative pb-2 text-[var(--white-2)] text-2xl font-semibold;
+}
+
+.article-title {
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.article-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  background: var(--text-gradient-yellow);
+  border-radius: 3px;
+}
+
+.article-title::after {
+  width: 40px;
+  height: 5px;
+}
+
+.timeline-list {
+  position: relative;
+  margin-left: 20px;
+}
+
+.timeline-list::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -4px;
+  width: 2px;
+  height: 100%;
+  background: var(--jet);
+}
+
+/* Timeline line mặc định đã có trong .timeline-list::before của bạn */
+
+/* Item hover nhẹ nhàng */
+.timeline-item {
+  will-change: transform, opacity;
+}
+
+/* Node có viền giả (box-shadow) nằm trong component rồi, thêm halo pulse bằng phần tử phụ */
+.timeline-node {
+  box-shadow: 0 0 0 4px var(--jet);
+}
+
+/* Halo pulse */
+.timeline-node-halo {
+  box-shadow: 0 0 0 2px hsla(45, 100%, 72%, 0.35) inset;
+  animation: pulse-ring 2s ease-out infinite;
+  opacity: 0.8;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Khi hover item thì nhấn mạnh tiêu đề & period (nếu muốn) */
+.timeline-item:hover .timeline-item-title {
+  color: var(--orange-yellow-crayola);
+}
+.timeline-item:hover span {
+  color: var(--vegas-gold);
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--smoky-black);
+}
+
+body::-webkit-scrollbar-thumb {
+  border: 5px solid var(--eerie-black-2);
+  background: hsla(0, 0%, 100%, 0.1);
+  border-radius: 20px;
+  box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11) inset -1px -1px 0 hsla(0, 0%, 0%, 0.11);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: hsla(0, 0%, 100%, 0.2);
+}
+
+body,
+.cu::-webkit-scrollbar-button {
+  height: 60px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
