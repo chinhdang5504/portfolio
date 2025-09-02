@@ -19,12 +19,15 @@ export default function App() {
       </aside>
 
       {/* Nội dung */}
-      <section className='flex-1 space-y-6 relative custom-scroll overflow-auto'>
+      <section className='flex-1 space-y-6 relative overflow-auto'>
         <Navbar active={active} onChange={setActive} />
-        {active === 'About' && <About />}
-        {active === 'Resume' && <Resume />}
-        {active === 'Portfolio' && <Portfolio />}
-        {active === 'Contact' && <Contact />}
+
+        <div key={active} className='animate-fadeIn'>
+          {active === 'About' && <About />}
+          {active === 'Resume' && <Resume />}
+          {active === 'Portfolio' && <Portfolio />}
+          {active === 'Contact' && <Contact />}
+        </div>
       </section>
     </main>
   )
