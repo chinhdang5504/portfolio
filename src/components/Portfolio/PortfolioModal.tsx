@@ -169,8 +169,10 @@ export default function ProjectModal({ project, open, onClose }: Props) {
                     {project.technology.map((t) => (
                       <li
                         key={t}
-                        className='px-2.5 py-1 rounded-lg border border-[var(--jet)] text-xs text-[var(--white-2)]
-                                   bg-[var(--eerie-black-2)]/70'
+                        className='px-3 py-1 rounded-full border border-[var(--jet)]
+                                  text-[12px] font-medium  tracking-wide
+                                  text-[var(--white-2)] bg-[var(--eerie-black-2)]/70
+                                  shadow-sm hover:scale-105 transition-transform duration-150'
                       >
                         {t}
                       </li>

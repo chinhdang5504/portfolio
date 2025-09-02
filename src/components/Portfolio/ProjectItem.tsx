@@ -11,7 +11,7 @@ type Props = {
 
 export default function ProjectItem({ project, mounted, index = 0 }: Props) {
   const [open, setOpen] = useState(false)
-  const techChips = (project.technology ?? []).slice(0, 3)
+  const techChips = project.technology
 
   return (
     <>
@@ -70,16 +70,29 @@ export default function ProjectItem({ project, mounted, index = 0 }: Props) {
             {/* 3 tech chips */}
             {techChips.length > 0 && (
               <ul className='flex flex-wrap gap-2'>
-                {techChips.map((t) => (
+                {techChips.slice(0, 3).map((t) => (
                   <li
                     key={t}
-                    className='px-2 py-0.5 rounded-md border border-[var(--jet)]
-                               text-[11px] uppercase tracking-wide
-                               text-[var(--white-2)] bg-[var(--eerie-black-2)]/70'
+                    className='px-3 py-1 rounded-full border border-[var(--jet)]
+                   text-[10px] font-medium tracking-wide
+                   text-[var(--white-2)] bg-[var(--eerie-black-2)]/70
+                   shadow-sm hover:scale-105 transition-transform duration-150'
                   >
                     {t}
                   </li>
                 ))}
+
+                {techChips.length > 3 && (
+                  <li
+                    className='px-3 py-1 rounded-full border border-[var(--jet)]
+                   text-[12px] font-medium uppercase tracking-wide
+                   text-[var(--orange-yellow-crayola)] bg-[var(--jet)]
+                   cursor-pointer hover:bg-[var(--orange-yellow-crayola)] hover:text-[var(--jet)]
+                   transition-colors duration-150'
+                  >
+                    +{techChips.length - 3}
+                  </li>
+                )}
               </ul>
             )}
 
