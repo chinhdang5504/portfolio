@@ -27,7 +27,7 @@ export default function Sidebar() {
         <div className='flex-1'>
           <h1 className='text-[var(--white-2)] text-xl font-semibold mt-0 lg:mt-4'>Chinh Dang</h1>
           <p className='bg-[var(--onyx)] text-[12px] font-light px-3 py-1 rounded-md text-[var(--white-1)] mt-2 inline-block'>
-            Web developer
+            Software Engineer
           </p>
         </div>
 

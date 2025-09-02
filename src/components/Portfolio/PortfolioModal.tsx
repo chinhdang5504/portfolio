@@ -156,7 +156,9 @@ export default function ProjectModal({ project, open, onClose }: Props) {
               {project.shortDescription && (
                 <div>
                   <h5 className='text-[var(--white-2)] font-semibold mb-1'>Overview</h5>
-                  <p className='text-[var(--light-gray)] text-sm leading-relaxed'>{project.shortDescription}</p>
+                  <p className='text-[var(--light-gray)] text-sm leading-relaxed text-justify'>
+                    {project.shortDescription}
+                  </p>
                 </div>
               )}
 
