@@ -19,7 +19,7 @@ export default function App() {
       </aside>
 
       {/* Nội dung */}
-      <section className='flex-1 space-y-6 relative overflow-auto'>
+      <section className='flex-1 space-y-6 relative overflow-hidden'>
         <Navbar active={active} onChange={setActive} />
 
         <div key={active} className='animate-fadeIn'>
